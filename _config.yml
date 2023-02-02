@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "ko-KR"
 title                    : "hyeongyu.log"
 title_separator          : "-"
-subtitle                 : "Datascience & Machine learning & MLOps"
+subtitle                 : "Datascience"
 name                     : "Moon Hyeongyu"
 description              : "Self blog"
 url                      : "https://hyeongyuu.github.io/"
@@ -105,18 +105,18 @@ analytics:
 # Site Author
 author:
   name             : "Moon Hyeongyu"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Scientist"
   location         : "Seoul.South Korea"
   email            : "hyeongyu.moon@gmail.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "hyeongyu.moon@gmail.com"
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: "hyeongyu.moon@gmail.com"
     
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      # url: "mailto:your.name@email.com"
+      url: "https://www.linkedin.com/in/hyeongyu-moon-9b7498264/"
 
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
