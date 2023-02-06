@@ -1,26 +1,22 @@
 ---
 layout: single
 title: "Overfitting"
-# excerpt:
+excerpt: ""
 
-date: 2023-02-03
+date: 2023-02-04
 
 categories:
-    - ml
+    - Machine learning
 tags:
-    - test
-    - ml
+    - Machine learning
 
-toc: true
-toc_label: "content"
-toc_icon: "bars"
-toc_sticky: true
+# toc: true
+# toc_label: "content"
+# toc_icon: "bars"
+# toc_sticky: true
 ---
-
 <br>
-
 머신러닝에서 훈련 데이터로 모델을 생성하고 테스트 데이터에 적용해보면 훈련 데이터에서 좋았던 성능이 테스트 데이터에서 현저히 떨어지는 경우가 자주 발생한다. 테스트 데이터에 문제가 있거나 훈련 데이터를 통해 생성한 모델에 문제가 있어 성능에 차이가 생기는 것이다. 테스트 데이터에 문제가 있는 경우는 학습시 발생하는 것이 아니라 모델링과 관계없는 순수한 데이터의 문제이지만, 훈련 데이터로 생성한 모델은 모델링과 직접적인 관련이 있다. **훈련 데이터를 과하게 학습하여 모델이 훈련 데이터에 최적화되어 테스트 데이터에서의 성능이 떨어지는 것인데 이를 과적합(Overfitting)이라 한다.** 과적합은 머신러닝 과정에서 발생하는 대표적인 문제인데, 과적합을 발생시키지 않으면서 가능한 최대의 학습을 시키는 것이 머신러닝의 궁극적 목표이다.
-
 <br>
 
 ![over1](https://user-images.githubusercontent.com/82218035/118114243-4980d600-b422-11eb-878f-4425574acc92.PNG)
@@ -54,8 +50,6 @@ toc_sticky: true
 - 과적합(Overfitting)은 훈련 데이터를 과하게 학습하여 모델이 훈련 데이터에 최적화 된 것을 말한다.
 - 과적합은 분산(Variance), 편향(Bias)과도 관련있으며, 분산이 크면 예측 분포가 큰 복잡한 모델을 만들어 과적합이 발생한다.
 - 규제(Regularization)는 비용 함수(Cost Function)에 패널티를 추가해 과적합을 방지한다.
-
-
 
 <!--
 절편을 더해주는 것
