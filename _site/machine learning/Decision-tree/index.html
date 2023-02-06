@@ -1,0 +1,560 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Decision tree - Hyeongyu.log</title>
+<meta name="description" content="Self blog">
+
+
+  <meta name="author" content="Moon Hyeongyu">
+  
+  <meta property="article:author" content="Moon Hyeongyu">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Hyeongyu.log">
+<meta property="og:title" content="Decision tree">
+<meta property="og:url" content="http://localhost:4000/machine%20learning/Decision-tree/">
+
+
+  <meta property="og:description" content="Self blog">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-02-04T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/machine%20learning/Decision-tree/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Moon Hyeongyu",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Hyeongyu.log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo.jpg/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.jpg/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.jpg/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/images/logo.jpg/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Hyeongyu.log
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/bio-photo.jpg" alt="Moon Hyeongyu" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Moon Hyeongyu</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Data Scientist</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Seoul.South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:hyeongyu.moon@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/hyeongyu-moon-9b7498264/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/hyeongyuu" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Decision tree">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2023-02-04T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/machine%20learning/Decision-tree/" class="u-url" itemprop="url">Decision tree
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p><br /></p>
+
+<p>머신러닝의 기법으로 결정 트리(Decision Tree)를 사용하여 예측 모델을 만드는 결정 트리 학습법(Decision Tree Learning)이 있다. 결정 트리는 의사 결정 규칙과 그에 따른 결과를 보기 쉽게 트리 구조로 나타내어 결과에 대한 원인 파악이 가능하다는 장점이 있다. 즉, 결정 트리의 규칙들이 어떤 기준으로 설정되었는지 살펴보고 분류 결과 확인이 같이 가능하기 때문에 <strong>분류 기준을 파악하기에 유용할것이다.</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/117408108-690f8e80-af4a-11eb-9c24-948b0564476b.PNG" alt="decisiontree5" /></p>
+
+<p><br /></p>
+
+<p><strong>결정 트리의 종류로 분류트리(Classification Tree)와 회귀트리(Regression Tree)가 있는데</strong>, 두 방식 모두 특정한 기준을 정하고 그 순간의 최적의 결정을 하는 greedy 방식을 따른다. 분류트리는 Target변수(Y)가 범주형 변수인 경우 사용하는데 <strong>정보이득(InformationGain)이 최대가 되는 특성으로 데이터를 나누고 정보이득은 불순도(Impurity)를 통해 계산한다.</strong> 여기서 불순도는 타겟변수의 분류가 잘 되어 있을수록 0에 가까운 값이 나온다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/117397012-19bf6300-af36-11eb-87a2-91a13e913399.PNG" alt="decisiontree3" /></p>
+
+<blockquote>
+  <p>불순도
+불순도를 쉽게 표현하자면 방의 어질러진 정도를 나타낸다고 표현한다.
+불순도는 높게 나올수록 방이 어지럽다는 뜻이고, 분류가 이뤄지지 않았다고 이해할수있으며, 지표로는 지니계수(Gini Index)와, 엔트로피(Entropy)가 있다.</p>
+</blockquote>
+
+<p><strong>분류에서 정보이득이 최대가 된다면 부모 노드의 불순도와 자식 노드의 불순도의 차이가 최대임을 뜻하는데, 노드간의 불순도의 차이가 최대가 되어야 분류가 잘 이뤄졌음을 뜻하기 때문이다.</strong></p>
+
+<blockquote>
+  <p>정보이득과 불순도<br />
+정보이득은 분류의 기준을 찾기 위한 노드 간의 불순도 차이이고, <br />
+불순도는 분류의 기준을 설정하기 위한 노드 내부의 수치이다.</p>
+</blockquote>
+
+<p>회귀트리는 Target변수(Y)가 연속형 변수인 경우 사용하며, <strong>잔차 제곱합(RSS)을 최소화 시킬 수 있는 방향으로 분류 기준을 만드는 방식이다.</strong> 분류 트리와 크게 다르지 않으며 예측값이 범주형이 아니기 때문에 예측한 구간내의 평균값으로 예측값을 계산한다. 회귀트리를 회귀분석과 혼동 할 수 있는데, 회귀트리는 회귀 함수를 기반으로 하지 않고 트리 기반으로 예측을 진행하기 때문에 <strong>트리구조로 데이터를 구간화 시킨 후 나뉜 구간별로 회귀분석을 시행하는 방식이라 생각한다.</strong></p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/117397071-46737a80-af36-11eb-84cf-a886abc67779.PNG" alt="decisiontree4" /></p>
+
+<p>위의 그림은 동일한 데이터를 각각 결정 트리와 서포트 벡터 머신(SVM)으로 분류를 진행한 결과이다. 두 분류 모델의 가장 큰 차이점을 결정 경계(Decision Boundary)로 확인 가능하다. <strong>결정 트리는 재귀적 분기 방식으로 한번에 하나의 특성(Feature)만 고려하여 분류를 진행하기 때문에 결정 경계가 모두 수직을 이루고 있으며,</strong> 서포트 벡터 머신은 모든 특성을 고려하여 초평면을 찾고 분류를 진행하기 때문에 결정 경계가 곡선형태로 나타난다. 이러한 결정 트리의 분류는 <strong>일차원 방식이라 과적합이 발생하지 않을 것이라 생각 할 수도 있지만, 일차원 분류가 여러 번 시행되어 분류 횟수의 마지노선을 정해주지 않으면 과적합이 쉽게 발생하는 단점이 있다.</strong> (그림의 분류 경계만 보더라도 하나의 값을 분류하기 위해 모델이 과적합된 모습을 볼 수 있다)
+그렇다면 결정 트리는 어떤 데이터의 분류에 적용하는 것이 효과적일까?<br />
+<strong>결정 트리는 독립변수와 종속변수 간의 관계가 비선형적인 관계를 나타낼때 좋은 모델을 만들 것이다.</strong> 독립변수의 값이 커질수록 결정 경계가 같이 변한다면 선형 형태의 분류가 적합하겠지만, 하나의 특성이 여러 구간으로 분리 된다면 단순한 비선형 형태의 분류인 결정 트리가 효과적일 것이다.</p>
+
+<h5 id="결론">결론</h5>
+<ul>
+  <li>머신러닝의 기법인 결정 트리(Decision Tree)는 분리 규칙을 트리 구조로 만들어 모델 이해가 쉽다.</li>
+  <li>분류트리는 정보이득(InformationGain)으로 데이터를 나누고 정보이득은 불순도(Impurity)를 통해 계산한다.</li>
+  <li>결정 트리는 비선형적인 관계를 분류할때 효과적인 모델을 만든다.</li>
+</ul>
+
+<!--
+
+**선형 모델을 만드는 것인가??
+선형성 존재여부 -> 과적합 발생
+
+
+문제점 (과적합)
+발생원인
+해결방법
+가지치기
+
+
+회귀 트리는 회귀 함수를 기반으로 하지 않고 결정 트리와 같이 트리기반으로 한다.
+즉, 회귀를 위한 트리를 생성하고 이를 기반으로 회귀 예측을 하는 것이다.
+회귀 트리의 경우 분류 트리와 크게 다르지 않다. 다만 리프 노드에서 예측 결정값을 만드는 과정에 차이가 있다.
+분류 트리가 특정 클래스 레이블을 결정하는 것과는 달리
+회귀 트리는 리프 노드에 속한 데이터 값의 평균값을 구해 회귀 예측값을 계산한다.
+
+
+DecisionTree종류
+분류트리,
+정보 이득, 불순도(엔트로피, 지니)
+**불순도개념
+
+
+회귀트리
+RSS(잔차 제곱합)
+
+
+**선형 모델을 만드는 것인가??
+선형성 존재여부 -> 과적합 발생
+회귀트리도 특정 구간에 대한 회귀만 시행
+
+
+문제점 (과적합)
+발생원인
+해결방법
+
+
+
+RandomForest(배깅)
+RandomForest란?
+DecisionTree의 문제점 해결
+-->
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a><span class="sep">, </span>
+    
+      <a href="/tags/#model" class="page__taxonomy-item p-category" rel="tag">Model</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2023-02-04T00:00:00+09:00">February 4, 2023</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/machine%20learning/Support-vector-machine/" class="pagination--pager" title="Support vector machine
+">이전</a>
+    
+    
+      <a href="/machine%20learning/K-nearest-neighbor/" class="pagination--pager" title="K-nearest neighbor
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:hyeongyu.moon@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/hyeongyu-moon-9b7498264/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/hyeongyuu" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Moon Hyeongyu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/machine%20learning/Decision-tree/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/machine%20learning/Decision tree"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyeongyu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
