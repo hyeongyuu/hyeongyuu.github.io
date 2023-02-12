@@ -29,6 +29,10 @@
 <lastmod>2023-02-04T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/daily%20life/2023%EB%85%84-%EB%82%98%EC%9D%98-%EB%8B%A4%EC%A7%90/</loc>
+<lastmod>2023-02-12T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -42,5 +46,12 @@
 </url>
 <url>
 <loc>http://localhost:4000/year-archive/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/google7044b061e1662689.html</loc>
+<lastmod>2023-02-07T14:36:44+09:00</lastmod>
 </url>
 </urlset>

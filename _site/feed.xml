@@ -1,37 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-06T10:40:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyeongyu.log</title><subtitle>Self blog</subtitle><author><name>Moon Hyeongyu</name></author><entry><title type="html">Logistic regression</title><link href="http://localhost:4000/machine%20learning/Logistic-regression/" rel="alternate" type="text/html" title="Logistic regression" /><published>2023-02-04T00:00:00+09:00</published><updated>2023-02-04T00:00:00+09:00</updated><id>http://localhost:4000/machine%20learning/Logistic%20regression</id><content type="html" xml:base="http://localhost:4000/machine%20learning/Logistic-regression/"><![CDATA[<p><br /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-12T20:39:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hyeongyu.log</title><subtitle>Self blog</subtitle><author><name>Moon Hyeongyu</name></author><entry><title type="html">2023년 나의 다짐</title><link href="http://localhost:4000/daily%20life/2023%EB%85%84-%EB%82%98%EC%9D%98-%EB%8B%A4%EC%A7%90/" rel="alternate" type="text/html" title="2023년 나의 다짐" /><published>2023-02-12T00:00:00+09:00</published><updated>2023-02-12T00:00:00+09:00</updated><id>http://localhost:4000/daily%20life/2023%EB%85%84%20%EB%82%98%EC%9D%98%20%EB%8B%A4%EC%A7%90</id><content type="html" xml:base="http://localhost:4000/daily%20life/2023%EB%85%84-%EB%82%98%EC%9D%98-%EB%8B%A4%EC%A7%90/"><![CDATA[<h2 id="시작하며">시작하며</h2>
 
-<p><strong>머신러닝은 크게 지도학습과 비지도학습 그리고 강화학습으로 구분된다.</strong> 그중에서 지도학습의 기법인 로지스틱 회귀(LogisticRegression)에 대해 알아보고자 한다. 지도학습은 크게 <strong>분류(Classification)와 회귀(Regression)로</strong> 구분짓는데 <strong>로지스틱 회귀는 이름에 회귀(Regression)을 포함하고 있지만 대부분 분류를 목적으로 활용된다.</strong> 어떤 이유로 이름에 회귀를 포함하고 있지만 분류를 목적으로 사용하고 있는지 알아보고 로지스틱 회귀분석이란 어떤 것인지 정리를 통해 구체적으로 알아보겠다.</p>
+<p>해가 바뀐 지도 벌써 한 달이 지났다. 매년 12월 31일 내년은 더 성장한 사람이 되겠다고 스스로 다짐한다. 일 년간의 <span style="background-color: #fff5b1"><strong>단기적인 목표</strong></span>를 세우고 실천했지만, 작년은 그렇지 못했다. 처음 취업한 회사에 집중하겠다는 막연한 계획만으로 보낸 작년을 돌아보니 내게 정량적으로 남은 것이 없었다. 이번에도 작년과 같이 보내지 않기 위해 다시 <span style="background-color: #dcffe4"><strong>일 년간의 목표</strong></span>를 세워보려 한다.</p>
 
-<p><br /></p>
+<h2 id="나의-다짐목표">나의 다짐(목표)</h2>
+<p class="notice"><strong>목표</strong>을 세우고 <strong>세부적인 실천 계획</strong>을 작성해보자❗️</p>
 
-<p>우선, 로지스틱 회귀를 알아보기 전에 회귀란 무엇인지 구체적인 개념을 잡고 가보자. <strong>회귀의 사전적 의미는 ‘한 바퀴 돌아서 본디의 자리나 상태로 돌아오는 것’이라고 한다.</strong> 분석에서 회귀는 평균으로 돌아가는 것을 뜻하며, 예를 들어 부모와 자녀의 키는 선형적인 관계가 있어서 부모의 키가 크면 자녀의 키도 크겠지만 부모의 키가 아무리 커도 <strong>결국 자녀의 키는 자녀 세대의 평균으로 돌아가고 있는 것을 회귀한다고 표현한다.</strong></p>
+<h3 id="일-년간의-목표">일 년간의 목표</h3>
+<p>무엇을 최종 목표로 이번 연도를 계획해야 할지 고민했다. 재작년까지는 취업을 최종 목표로 실천 계획을 세웠다면, 취업을 완료한 지금 그다음 목표에 대해 생각해 본 적이 없었다. 그렇기에 너무 멀리 보지 않는 선에서 다시 단기적인 최종 목표를 세워보고 이에 따라 이번 연도를 계획해보자.</p>
 
-<p><img src="https://user-images.githubusercontent.com/82218035/116064424-f6d4b980-a6c0-11eb-9fa3-f4a83685b1e8.PNG" alt="lr3" /></p>
+<p>우선, 단기적인 최종 목표는 지금보다 한 단계 높은 회사로 이직하는 것이다. 스타트업에 들어가면서 내가 성장하는 속도에 맞춰 회사도 같이 성장하기를 기대했으나, 현실적으로 회사 성장이 나의 기대만큼 이뤄지지 못해 아쉬웠다. 지금은 온전히 나를 위해 회사와 같이 성장하는 것이 아닌 성장 가능한 곳으로 나 스스로 움직여야 한다고 판단했다.</p>
 
-<p>로지스틱 회귀는 선형 회귀의 목표와 동일하게 종속 변수와 독립 변수의 관계를 하나의 모델로 정의하고 예측에 활용하는 것이다. 이렇듯 독립 변수의 선형 결합으로 종속 변수를 설명하고 있기에 선형 회귀 분석과 유사하지만 로지스틱 회귀는 종속 변수가 연속형이 아닌 범주형이라는 점에서 분류 기법으로 활용된다. <strong>즉, 독립 변수의 선형적 특징을 활용한다는 점이 이름에 회귀를 포함하고 있다고 보았고, 종속 변수가 범주형이기에 분류 기법으로 활용한다고 보여진다.</strong></p>
+<p>최종 목표를 위한 실행 목표를 정리해보자. 한 단계 높은 회사로 이직하기 위해 내가 어떤 것들을 실행해야 할까?<br />
+<strong>첫 번째.</strong> <u>개인 역량 및 업무능력을 향상</u>하자<br />
+<strong>두 번째.</strong> 모든 활동을 문서화하고 이를 활용해 <u>나만의 스토리를 만들자</u><br />
+위 실행 목표를 이행함으로 최종 목표를 이루기에 충분한 나를 만들 것이다.</p>
 
-<p><br /></p>
-
-<p><img src="https://user-images.githubusercontent.com/82218035/116064474-02c07b80-a6c1-11eb-9606-ac525f25e44f.PNG" alt="lr1" /></p>
-
-<p>위의 그래프는 선형 회귀 분석을 통한 분류는 문제가 있음을 알수있다. 첫번째 그래프를 보면 22시간 이상 공부한 사람은 시험에 통과하였고 22시간 보다 적게 공부한 사람은 탈락하였다. 이 결과를 바탕으로 선형적인 모델을 만들면 경계선을 기준으로 22시간일때의 합격률은 0.6~0.7 정도가 나온다. 만약 여기서 새로운 데이터로 많은 시간을 공부해서 합격한 사람이 추가된다고 가정해보자. 결과값인  종속 변수가 최대값이 1이기 때문에 이때 만들어진 모델은 그 전 모델보다 기울기가 감소하게된다. 이때 문제가 생기는데 <strong>기울기가 감소하여 합격의 기준이 높아짐으로 그전에 합격이라고 예측했던 값들이 불합격으로 잘못 판단하게 되는 경우가 발생하게된다.</strong> 이러한 문제점을 해결하기 위해 발견한 함수가 시그모이드 함수로 로지스틱 회귀에 사용된다.</p>
-
-<p><br /></p>
-
-<p><img src="https://user-images.githubusercontent.com/82218035/116173868-4c07de00-a748-11eb-8ca1-44e4b11cc212.PNG" alt="lr4" /></p>
-
-<p>시그모이드 함수는 무한한 범위의 x값이 들어오면 y값의 범위는 한상 [0, 1] 사이의 값으로 반환한다. 이러한 함수의 특징때문에 <strong>높은 값의 x가 들어와도 합격률의 변동이 없어 선형 회귀를 통한 분류의 문제를 해결가능하도록 만들어준다.</strong> 반대로 선형 회귀는 y값이 [0, 1]사이를 벗어나는 값이 나오기 때문에 분류로 활용시에는 예측의 정확도만 떨어뜨리게 된다. 그래서 로지스틱 회귀에서 시그모이드 함수를 사용하고 시그모이드 함수는 확률값을 반환해 0에 가까우면 0으로 1에 가까우면 1로 분류를 시행한다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/82218035/116173913-60e47180-a748-11eb-9f66-c5897a944856.PNG" alt="lr3" /></p>
-
-<p><br /></p>
-
-<h6 id="결론">결론</h6>
+<h3 id="목표-및-실천-계획">목표 및 실천 계획</h3>
+<p>앞서 정한 목표에 따른 각각의 <strong>세부적인 실천 계획</strong>을 작성해보자. (정량적인 목표 설정)</p>
 <ul>
-  <li>선형회귀로 분류를 시행 시 발생하는 문제를 해결하기 위해 로지스틱 회귀를 사용한다.</li>
-  <li>로지스틱 회귀는 시그모이드 함수를 사용한 분류 기법이다.</li>
-  <li>시그모이드 함수는 확률값을 반환하고 확률에 따라 [0, 1]로 분류를 시행한다.</li>
-</ul>]]></content><author><name>Moon Hyeongyu</name></author><category term="Machine learning" /><category term="Machine learning" /><category term="Model" /></entry><entry><title type="html">Support vector machine</title><link href="http://localhost:4000/machine%20learning/Support-vector-machine/" rel="alternate" type="text/html" title="Support vector machine" /><published>2023-02-04T00:00:00+09:00</published><updated>2023-02-04T00:00:00+09:00</updated><id>http://localhost:4000/machine%20learning/Support%20vector%20machine</id><content type="html" xml:base="http://localhost:4000/machine%20learning/Support-vector-machine/"><![CDATA[<p><br /></p>
+  <li>한 단계 높은 회사로 이직
+    <ul>
+      <li>개인 역량 및 업무능력 향상
+        <ul>
+          <li>다양한 도메인 또는 데이터 분석 경험 쌓기.</li>
+          <li>직무 관련 서적 최소 6권(2달에 1권) 읽기. 감상평도 기록</li>
+          <li>영어 공부. 책을 읽거나 회화 학원 등록</li>
+        </ul>
+      </li>
+      <li>나만의 스토리 생성
+        <ul>
+          <li>최소 1달 1회 포스팅을 목표로 블로그, 깃허브 운영.</li>
+          <li>kaggle 또는 데이콘 참가. 진행 과정은 기록하고 최소 2개는 참가</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="마치며">마치며</h2>
+<p>이번 연도 <strong>나의 다짐</strong>을 <strong>목표에 기반해 작성</strong>해봤다. 최종 목표를 세우고 다음 실행 목표, 마지막으로 정량적인 목표까지 작성하면서 어느 정도 이번 연도 나의 다짐과 목표가 구체화 된 것 같다. 최종 목표를 달성하기 위한 2023년을 보내고 연말 회고록에서 최종 목표의 달성 여부와 달성률을 통해 한 해를 돌아볼 때, 후회 없는 한 해가 됐으면 좋겠다. <strong>지나간 날은 돌아오지 않음을 명심</strong>하고 이번 연도를 성실하게 보내자.</p>]]></content><author><name>Moon Hyeongyu</name></author><category term="Daily life" /><category term="Daily life" /><category term="나의 다짐" /></entry><entry><title type="html">Support vector machine</title><link href="http://localhost:4000/machine%20learning/Support-vector-machine/" rel="alternate" type="text/html" title="Support vector machine" /><published>2023-02-04T00:00:00+09:00</published><updated>2023-02-04T00:00:00+09:00</updated><id>http://localhost:4000/machine%20learning/Support%20vector%20machine</id><content type="html" xml:base="http://localhost:4000/machine%20learning/Support-vector-machine/"><![CDATA[<p><br /></p>
 
 <p>머신러닝의 지도학습 기법으로 주로 분류에 자주 사용되는 SVM에 대하여 알아보고자 한다. SupportVectorMachine의 줄일말로 <strong>SupprotVector(서포트 벡터)와 Hyperplane(초평면)을 이용해 DecisionBoundary(결정 경계)를 정의하고 분류를 시행하는 알고리즘</strong>이다.</p>
 
@@ -436,4 +443,37 @@ cost 최소화가 목표
   <li>앙상블은 여러 모델을 조화시켜 하나의 새로운 모델을 만드는 것을 의미한다.</li>
   <li>모델은 많을수록, 다양한 모델이 있을수록 좋은 성능을 보여준다.</li>
   <li>앙상블 기법은 모델 각각의 특징을 결합한 새로운 모델을 생성한다.</li>
-</ul>]]></content><author><name>Moon Hyeongyu</name></author><category term="Machine learning" /><category term="Machine learning" /></entry></feed>
+</ul>]]></content><author><name>Moon Hyeongyu</name></author><category term="Machine learning" /><category term="Machine learning" /></entry><entry><title type="html">Logistic regression</title><link href="http://localhost:4000/machine%20learning/Logistic-regression/" rel="alternate" type="text/html" title="Logistic regression" /><published>2023-02-04T00:00:00+09:00</published><updated>2023-02-04T00:00:00+09:00</updated><id>http://localhost:4000/machine%20learning/Logistic%20regression</id><content type="html" xml:base="http://localhost:4000/machine%20learning/Logistic-regression/"><![CDATA[<p><br /></p>
+
+<p><strong>머신러닝은 크게 지도학습과 비지도학습 그리고 강화학습으로 구분된다.</strong> 그중에서 지도학습의 기법인 로지스틱 회귀(LogisticRegression)에 대해 알아보고자 한다. 지도학습은 크게 <strong>분류(Classification)와 회귀(Regression)로</strong> 구분짓는데 <strong>로지스틱 회귀는 이름에 회귀(Regression)을 포함하고 있지만 대부분 분류를 목적으로 활용된다.</strong> 어떤 이유로 이름에 회귀를 포함하고 있지만 분류를 목적으로 사용하고 있는지 알아보고 로지스틱 회귀분석이란 어떤 것인지 정리를 통해 구체적으로 알아보겠다.</p>
+
+<p><br /></p>
+
+<p>우선, 로지스틱 회귀를 알아보기 전에 회귀란 무엇인지 구체적인 개념을 잡고 가보자. <strong>회귀의 사전적 의미는 ‘한 바퀴 돌아서 본디의 자리나 상태로 돌아오는 것’이라고 한다.</strong> 분석에서 회귀는 평균으로 돌아가는 것을 뜻하며, 예를 들어 부모와 자녀의 키는 선형적인 관계가 있어서 부모의 키가 크면 자녀의 키도 크겠지만 부모의 키가 아무리 커도 <strong>결국 자녀의 키는 자녀 세대의 평균으로 돌아가고 있는 것을 회귀한다고 표현한다.</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/116064424-f6d4b980-a6c0-11eb-9fa3-f4a83685b1e8.PNG" alt="lr3" /></p>
+
+<p>로지스틱 회귀는 선형 회귀의 목표와 동일하게 종속 변수와 독립 변수의 관계를 하나의 모델로 정의하고 예측에 활용하는 것이다. 이렇듯 독립 변수의 선형 결합으로 종속 변수를 설명하고 있기에 선형 회귀 분석과 유사하지만 로지스틱 회귀는 종속 변수가 연속형이 아닌 범주형이라는 점에서 분류 기법으로 활용된다. <strong>즉, 독립 변수의 선형적 특징을 활용한다는 점이 이름에 회귀를 포함하고 있다고 보았고, 종속 변수가 범주형이기에 분류 기법으로 활용한다고 보여진다.</strong></p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/116064474-02c07b80-a6c1-11eb-9606-ac525f25e44f.PNG" alt="lr1" /></p>
+
+<p>위의 그래프는 선형 회귀 분석을 통한 분류는 문제가 있음을 알수있다. 첫번째 그래프를 보면 22시간 이상 공부한 사람은 시험에 통과하였고 22시간 보다 적게 공부한 사람은 탈락하였다. 이 결과를 바탕으로 선형적인 모델을 만들면 경계선을 기준으로 22시간일때의 합격률은 0.6~0.7 정도가 나온다. 만약 여기서 새로운 데이터로 많은 시간을 공부해서 합격한 사람이 추가된다고 가정해보자. 결과값인  종속 변수가 최대값이 1이기 때문에 이때 만들어진 모델은 그 전 모델보다 기울기가 감소하게된다. 이때 문제가 생기는데 <strong>기울기가 감소하여 합격의 기준이 높아짐으로 그전에 합격이라고 예측했던 값들이 불합격으로 잘못 판단하게 되는 경우가 발생하게된다.</strong> 이러한 문제점을 해결하기 위해 발견한 함수가 시그모이드 함수로 로지스틱 회귀에 사용된다.</p>
+
+<p><br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/116173868-4c07de00-a748-11eb-8ca1-44e4b11cc212.PNG" alt="lr4" /></p>
+
+<p>시그모이드 함수는 무한한 범위의 x값이 들어오면 y값의 범위는 한상 [0, 1] 사이의 값으로 반환한다. 이러한 함수의 특징때문에 <strong>높은 값의 x가 들어와도 합격률의 변동이 없어 선형 회귀를 통한 분류의 문제를 해결가능하도록 만들어준다.</strong> 반대로 선형 회귀는 y값이 [0, 1]사이를 벗어나는 값이 나오기 때문에 분류로 활용시에는 예측의 정확도만 떨어뜨리게 된다. 그래서 로지스틱 회귀에서 시그모이드 함수를 사용하고 시그모이드 함수는 확률값을 반환해 0에 가까우면 0으로 1에 가까우면 1로 분류를 시행한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/82218035/116173913-60e47180-a748-11eb-9f66-c5897a944856.PNG" alt="lr3" /></p>
+
+<p><br /></p>
+
+<h6 id="결론">결론</h6>
+<ul>
+  <li>선형회귀로 분류를 시행 시 발생하는 문제를 해결하기 위해 로지스틱 회귀를 사용한다.</li>
+  <li>로지스틱 회귀는 시그모이드 함수를 사용한 분류 기법이다.</li>
+  <li>시그모이드 함수는 확률값을 반환하고 확률에 따라 [0, 1]로 분류를 시행한다.</li>
+</ul>]]></content><author><name>Moon Hyeongyu</name></author><category term="Machine learning" /><category term="Machine learning" /><category term="Model" /></entry></feed>
