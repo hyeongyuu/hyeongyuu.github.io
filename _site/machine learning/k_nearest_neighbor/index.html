@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Unsupervised learning - Hyeongyu.log</title>
-<meta name="description" content="Self blog">
+<!-- begin _includes/seo.html --><title>K-nearest neighbor - Hyeongyu.log</title>
+<meta name="description" content="">
 
 
   <meta name="author" content="Moon Hyeongyu">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Hyeongyu.log">
-<meta property="og:title" content="Unsupervised learning">
-<meta property="og:url" content="http://localhost:4000/machine%20learning/Unsupervised-learning/">
+<meta property="og:title" content="K-nearest neighbor">
+<meta property="og:url" content="http://localhost:4000/machine%20learning/k_nearest_neighbor/">
 
 
-  <meta property="og:description" content="Self blog">
+  <meta property="og:description" content="">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/machine%20learning/Unsupervised-learning/">
+<link rel="canonical" href="http://localhost:4000/machine%20learning/k_nearest_neighbor/">
 
 
 
@@ -281,7 +281,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Unsupervised learning">
+    <meta itemprop="headline" content="K-nearest neighbor">
     <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="2023-02-04T00:00:00+09:00">
     
@@ -290,7 +290,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/machine%20learning/Unsupervised-learning/" class="u-url" itemprop="url">Unsupervised learning
+            <a href="http://localhost:4000/machine%20learning/k_nearest_neighbor/" class="u-url" itemprop="url">K-nearest neighbor
 </a>
           </h1>
           
@@ -303,39 +303,43 @@
         
         <p><br /></p>
 
-<p>머신러닝은 크게 지도학습(Supervised Learning), 비지도학습(Unsupervised Learning), 강화학습(Reinforcement Learning)으로 나뉜다. 지도학습과 강화학습은 입력(Input)에 대한 결과(Output)를 주고 학습하는 방식이지만 비지도학습은 입력에 대한 결과가 없이 입력만으로 학습을 진행한다. 비지도학습을 시험에 빗대면 문제에 정답이 없는 논술형 시험과 비슷하다고 생각하는데 정답이 없기 때문에 정답을 판단하는 기준이 모호하고 결과는 해석하기 나름이라는 공통점이 있다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/82218035/119490037-5218cb00-bd97-11eb-8b2b-7e373249f9bd.PNG" alt="unsupervised learning1" /></p>
+<p>KNN(K-최근접 이웃, K-Nearest Neighbor)은 직관적이고 간단한 방법에 비해 좋은 성능을 보여주어 종종 사용되는 머신러닝 알고리즘이다. 대부분의 머신러닝 알고리즘은 훈련데이터를 통해 모델을 생성하는 방식이라면, <strong>KNN은 하나하나의 데이터 값을 통해 학습을 시행하고 따로 모델을 생성하지 않는 비모수 방식이라는 특징이 있다.</strong> KNN 알고리즘의 작동방식에 대해 알아보기전 KNN의 특징인 비모수 방식에 대해 짚고 넘어가보자.</p>
 
 <p><br /></p>
 
-<p>비지도학습의 가장 대표적인 기법에는 군집화(Clustering)가 있다. 군집화는 논술형 시험과 유사하다. 논술형 시험은 정해진 결론이 없고 유사한 결론이 있기 때문에 비슷한 결론끼리 묶음 처리가 가능할 것이다. 이처럼 정해진 답은 없지만 유사한 답을 묶어 처리하는 방식이 군집화의 원리이다. 그리고 군집화를 시행하고 각각의 군집에 속한 사람들의 특징을 파악하면 군집 내부에서 새로운 특징 도출이 가능한데 만약 답안으로 긍정적인 결론을 지은 사람들을 모아놓고 다른 특징을 파악해보면 대부분 사람들은 밝은 성격을 갖고 있다는 새로운 특징을 찾을 수 있을 것이다.</p>
+<p><img src="https://user-images.githubusercontent.com/82218035/117812408-b5d1cd00-b29c-11eb-8b84-276ff99e144a.PNG" alt="knn3" /></p>
 
+<p><strong>모수 방식과 비모수 방식의 가장 큰 차이는 확률분포의 개념을 활용하느냐의 차이이다.</strong> 예를 들어, 모수 방식인 선형 회귀는 두 변수 사이의 관계를 표현하는 것인데 이때 생기는 오차는 정규분포, 즉 확률분포로 정규분포를 따르기 때문에 확률분포의 개념을 활용한다. 반대로 비모수 방식은 두 변수 사이의 관계를 표현할때 생기는 오차는 정규분포를 따르지 않는다고 할 수 있다. 즉, 비모수 방식은 오차가 특정 분포를 이루고 있는게 아니라 의미없이 오차들이 골고루 분포하고 있는 것이기 때문에 확률분포의 개념을 활용하지 않는 것이다.</p>
 <blockquote>
-  <p>군집화는 지도학습의 분류(Classification)와 공통점이 있다. 두 방식 모두 출력값이 분류 가능한 이산형 값으로 나와 데이터의 분류가 가능하다는 것이다. 그렇다면 비지도학습에서 지도학습의 회귀(Regression) 문제와 같이 연속형 값으로 예측은 불가능한가?</p>
+  <p>모수 방식과 비모수 방식은 선형, 비선형과 관련있다.<br />
+모수 방식은 변수가 선형 관계일때 활용하고, 비모수 방식은 변수가 비선형 관계일때 활용하는 것이
+적합한 방식이다.</p>
 </blockquote>
 
 <p><br /></p>
 
-<p><img src="https://user-images.githubusercontent.com/82218035/119490066-5a710600-bd97-11eb-8861-a19c8c33e406.PNG" alt="unsupervised learning2" /></p>
+<p><img src="https://user-images.githubusercontent.com/82218035/117812472-c7b37000-b29c-11eb-873e-860073605312.PNG" alt="knn1" /></p>
 
-<p>비지도학습은 차원 축소(Dimensionality Reduction)로 데이터의 주요 특징을 추출하고 변환 가능하다. 차원 축소 기법인 주성분 분석(PCA, Principal Component Analysis)을 실시하여 차원을 축소하고 복원하는 과정에서 데이터의 주요 특징만 남는 원리를 활용해 비지도 학습의 이상치 탐지(Unsupervised Anomaly Detection)가 가능하다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/82218035/119490097-68bf2200-bd97-11eb-842b-0275e107fe2f.PNG" alt="unsupervised learning3" /></p>
-
-<p>이때 입력 데이터의 특징을 추출하기 위해 오토인코더(Autoencoder)를 사용하는데 정상 데이터가 오토인코더를 거치면 정상 데이터가 출력되어 Input과 Output에 차이가 없는 반면, 비정상 데이터가 오토인코더를 거치면 정상 데이터가 출력되어 Input과 Output에 차이가 발생해 비정상 데이터가 구분 가능해진다.</p>
+<p>KNN은 대표적인 비모수 방식으로 데이터 간의 거리를 활용해 알고리즘이 작동한다. 만약 임의로 지정한 k=3이라면 (일반적으로 k는 홀수를 사용, 짝수의 k는 동점을 초래하기 때문) 새로 들어온 데이터에서 거리가 가까운 3개의 데이터를 통해 분류를 시행한다. <strong>모델을 별도로 생성하지 않는 알고리즘의 특성상 결정 경계(Decision Boundary)가 존재하지 않으며, 새로운 데이터가 주어지면 학습을 통해 새로 모델을 생성할 필요없이 새로운 데이터만 추가하여 분류한다.</strong> 그리고 거리를 기반으로 분류하여 이상치, 노이즈에 크게 영향을 받지 않는다는 장점도 있다.</p>
 
 <p><br /></p>
 
-<p>인공지능의 목적은 비지도학습이 가능한 인공지능을 만드는 것이라 생각한다. 기계가 인간처럼 스스로 판단하고 행동하도록 만들기위해 머신러닝의 지도학습은 정답을 보면서 학습하지만, 비지도학습은 정답을 모르고 계속해서 학습을 진행하기 때문에 처음 맞닥뜨린 상황이더라도 스스로 판단을 한다. 그리고 기계가 처음 접하는 상황에 자신만의 판단을 만든다면, 사람처럼 성격과 인격을 갖춘 인공지능이 구현가능할 것이다. 이처럼 인공지능의 최종 목표는 비지도학습을 통해서 완성되고 구현될것이라 본다.</p>
+<p><img src="https://user-images.githubusercontent.com/82218035/117812502-d1d56e80-b29c-11eb-9d41-311ed7bdf352.PNG" alt="knn2" /></p>
+
+<p>KNN은 유클리드 거리와 마할라노비스 거리 등 다양한 계산방식을 통해 거리 측정이 가능하다. 유클리드 거리는 흔히 알고있는 피타고라스 정리에 기초해서 거리를 구하는 방식이고, 마할라노비스 거리는 각 특성의 분포를 파악하고 실제로 같은 거리라도 특성마다 다르게 측정하는 방식이다. 거리를 측정하기 위한 특성으로 x, y가 있다고 가정해보자. <strong>특성 x의 분산이 특성 y보다 크다면 x의 분포가 더욱 퍼져있을것이고, 이때 분산을 거리의 기준으로 보면 특성 x에서의 거리는 동일한 거리라도 특성 y에서 보다 더 짧다고 볼 수 있다.</strong> 이처럼 특성마다 분포가 다르기 때문에 거리의 스케일이 다를것이고 이를 동일하게 하기 위해 마할라노비스 거리를 활용한다.</p>
+
+<blockquote>
+  <p>차원의 저주 : 유클리드 거리가 고차원에서 도움이 되지 않음,
+차원의 증가로 인한 데이터 간 거리 증가, PCA활용</p>
+</blockquote>
 
 <p><br /></p>
 
-<h5 id="결론">결론</h5>
+<h6 id="결론">결론</h6>
 <ul>
-  <li>비지도학습은 입력에 대한 결과가 없이 입력만으로 학습을 진행한다.</li>
-  <li>비지도학습은 차원 축소로 데이터의 주요 특징을 추출하고 변환 가능하다.</li>
-  <li>인공지능의 완전한 모습은 비지도학습으로 구현될것이다.</li>
+  <li>KNN은 특정한 모델을 생성하지 않고 데이터를 통해 학습을 시행하는 비모수 방식이다.</li>
+  <li>거리를 기반 알고리즘이기 때문에 노이즈에 크게 영향을 받지 않는다.</li>
+  <li>거리 측정을 위한 방법으로 크게 유클리드 거리와 마할라노비스 거리가 있다.</li>
 </ul>
 
         
@@ -353,7 +357,9 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a>
+      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a><span class="sep">, </span>
+    
+      <a href="/tags/#model" class="page__taxonomy-item p-category" rel="tag">Model</a>
     
     </span>
   </p>
@@ -387,11 +393,11 @@
       
   <nav class="pagination">
     
-      <a href="/machine%20learning/Overfitting/" class="pagination--pager" title="Overfitting
+      <a href="/machine%20learning/decision_tree/" class="pagination--pager" title="Decision tree
 ">이전</a>
     
     
-      <a href="/machine%20learning/Ensemble/" class="pagination--pager" title="Ensemble
+      <a href="/machine%20learning/overfitting/" class="pagination--pager" title="Overfitting
 ">다음</a>
     
   </nav>
@@ -484,8 +490,8 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/machine%20learning/Unsupervised-learning/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/machine%20learning/Unsupervised learning"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "http://localhost:4000/machine%20learning/k_nearest_neighbor/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/machine%20learning/k_nearest_neighbor"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');

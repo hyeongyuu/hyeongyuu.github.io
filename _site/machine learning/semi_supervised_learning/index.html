@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>K-nearest neighbor - Hyeongyu.log</title>
-<meta name="description" content="">
+<!-- begin _includes/seo.html --><title>Semi-supervised learning - Hyeongyu.log</title>
+<meta name="description" content="Self blog">
 
 
   <meta name="author" content="Moon Hyeongyu">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Hyeongyu.log">
-<meta property="og:title" content="K-nearest neighbor">
-<meta property="og:url" content="http://localhost:4000/machine%20learning/K-nearest-neighbor/">
+<meta property="og:title" content="Semi-supervised learning">
+<meta property="og:url" content="http://localhost:4000/machine%20learning/semi_supervised_learning/">
 
 
-  <meta property="og:description" content="">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2023-02-04T00:00:00+09:00">
+  <meta property="og:description" content="Self blog">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2023-03-10T00:00:00+09:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/machine%20learning/K-nearest-neighbor/">
+
+<link rel="canonical" href="http://localhost:4000/machine%20learning/semi_supervised_learning/">
 
 
 
@@ -281,16 +281,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="K-nearest neighbor">
+    <meta itemprop="headline" content="Semi-supervised learning">
     <meta itemprop="description" content="">
-    <meta itemprop="datePublished" content="2023-02-04T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2023-03-10T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/machine%20learning/K-nearest-neighbor/" class="u-url" itemprop="url">K-nearest neighbor
+            <a href="http://localhost:4000/machine%20learning/semi_supervised_learning/" class="u-url" itemprop="url">Semi-supervised learning
 </a>
           </h1>
           
@@ -301,46 +301,43 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <p><br /></p>
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> content</h4></header>
+              <ul class="toc__menu"><li><a href="#시작하며">시작하며</a></li><li><a href="#준지도학습semi-supervised-learning">준지도학습(Semi-supervised learning)</a><ul><li><a href="#준지도학습이란">준지도학습이란?</a></li><li><a href="#준지도학습의-필요성-및-효과">준지도학습의 필요성 및 효과</a></li></ul></li><li><a href="#fixmatch">Fixmatch</a><ul><li><a href="#fixmatch란">Fixmatch란?</a></li><li><a href="#pseudo-labels">pseudo-labels</a></li><li><a href="#consistency-regularization">consistency regularization</a></li><li><a href="#코드-구현">코드 구현</a></li></ul></li><li><a href="#마치며">마치며</a><ul><li><a href="#reference">Reference</a></li></ul></li></ul>
 
-<p>KNN(K-최근접 이웃, K-Nearest Neighbor)은 직관적이고 간단한 방법에 비해 좋은 성능을 보여주어 종종 사용되는 머신러닝 알고리즘이다. 대부분의 머신러닝 알고리즘은 훈련데이터를 통해 모델을 생성하는 방식이라면, <strong>KNN은 하나하나의 데이터 값을 통해 학습을 시행하고 따로 모델을 생성하지 않는 비모수 방식이라는 특징이 있다.</strong> KNN 알고리즘의 작동방식에 대해 알아보기전 KNN의 특징인 비모수 방식에 대해 짚고 넘어가보자.</p>
+            </nav>
+          </aside>
+        
+        <h2 id="시작하며">시작하며</h2>
+<p>간단 인사
+준지도학습이 어떤건지
+fixmatch</p>
 
-<p><br /></p>
+<h2 id="준지도학습semi-supervised-learning">준지도학습(Semi-supervised learning)</h2>
+<h3 id="준지도학습이란">준지도학습이란?</h3>
+<p>간단 설명
+실생활 예시</p>
 
-<p><img src="https://user-images.githubusercontent.com/82218035/117812408-b5d1cd00-b29c-11eb-8b84-276ff99e144a.PNG" alt="knn3" /></p>
+<h3 id="준지도학습의-필요성-및-효과">준지도학습의 필요성 및 효과</h3>
+<p>레이블 데이터의 부족
+확률분포 추정</p>
 
-<p><strong>모수 방식과 비모수 방식의 가장 큰 차이는 확률분포의 개념을 활용하느냐의 차이이다.</strong> 예를 들어, 모수 방식인 선형 회귀는 두 변수 사이의 관계를 표현하는 것인데 이때 생기는 오차는 정규분포, 즉 확률분포로 정규분포를 따르기 때문에 확률분포의 개념을 활용한다. 반대로 비모수 방식은 두 변수 사이의 관계를 표현할때 생기는 오차는 정규분포를 따르지 않는다고 할 수 있다. 즉, 비모수 방식은 오차가 특정 분포를 이루고 있는게 아니라 의미없이 오차들이 골고루 분포하고 있는 것이기 때문에 확률분포의 개념을 활용하지 않는 것이다.</p>
-<blockquote>
-  <p>모수 방식과 비모수 방식은 선형, 비선형과 관련있다.<br />
-모수 방식은 변수가 선형 관계일때 활용하고, 비모수 방식은 변수가 비선형 관계일때 활용하는 것이
-적합한 방식이다.</p>
-</blockquote>
+<h2 id="fixmatch">Fixmatch</h2>
+<h3 id="fixmatch란">Fixmatch란?</h3>
+<p>간당 설명</p>
 
-<p><br /></p>
+<h3 id="pseudo-labels">pseudo-labels</h3>
+<p>설명</p>
 
-<p><img src="https://user-images.githubusercontent.com/82218035/117812472-c7b37000-b29c-11eb-873e-860073605312.PNG" alt="knn1" /></p>
+<h3 id="consistency-regularization">consistency regularization</h3>
+<p>설명</p>
 
-<p>KNN은 대표적인 비모수 방식으로 데이터 간의 거리를 활용해 알고리즘이 작동한다. 만약 임의로 지정한 k=3이라면 (일반적으로 k는 홀수를 사용, 짝수의 k는 동점을 초래하기 때문) 새로 들어온 데이터에서 거리가 가까운 3개의 데이터를 통해 분류를 시행한다. <strong>모델을 별도로 생성하지 않는 알고리즘의 특성상 결정 경계(Decision Boundary)가 존재하지 않으며, 새로운 데이터가 주어지면 학습을 통해 새로 모델을 생성할 필요없이 새로운 데이터만 추가하여 분류한다.</strong> 그리고 거리를 기반으로 분류하여 이상치, 노이즈에 크게 영향을 받지 않는다는 장점도 있다.</p>
+<h3 id="코드-구현">코드 구현</h3>
 
-<p><br /></p>
+<h2 id="마치며">마치며</h2>
 
-<p><img src="https://user-images.githubusercontent.com/82218035/117812502-d1d56e80-b29c-11eb-9d41-311ed7bdf352.PNG" alt="knn2" /></p>
-
-<p>KNN은 유클리드 거리와 마할라노비스 거리 등 다양한 계산방식을 통해 거리 측정이 가능하다. 유클리드 거리는 흔히 알고있는 피타고라스 정리에 기초해서 거리를 구하는 방식이고, 마할라노비스 거리는 각 특성의 분포를 파악하고 실제로 같은 거리라도 특성마다 다르게 측정하는 방식이다. 거리를 측정하기 위한 특성으로 x, y가 있다고 가정해보자. <strong>특성 x의 분산이 특성 y보다 크다면 x의 분포가 더욱 퍼져있을것이고, 이때 분산을 거리의 기준으로 보면 특성 x에서의 거리는 동일한 거리라도 특성 y에서 보다 더 짧다고 볼 수 있다.</strong> 이처럼 특성마다 분포가 다르기 때문에 거리의 스케일이 다를것이고 이를 동일하게 하기 위해 마할라노비스 거리를 활용한다.</p>
-
-<blockquote>
-  <p>차원의 저주 : 유클리드 거리가 고차원에서 도움이 되지 않음,
-차원의 증가로 인한 데이터 간 거리 증가, PCA활용</p>
-</blockquote>
-
-<p><br /></p>
-
-<h6 id="결론">결론</h6>
-<ul>
-  <li>KNN은 특정한 모델을 생성하지 않고 데이터를 통해 학습을 시행하는 비모수 방식이다.</li>
-  <li>거리를 기반 알고리즘이기 때문에 노이즈에 크게 영향을 받지 않는다.</li>
-  <li>거리 측정을 위한 방법으로 크게 유클리드 거리와 마할라노비스 거리가 있다.</li>
-</ul>
+<h3 id="reference">Reference</h3>
 
         
       </section>
@@ -359,7 +356,7 @@
     
       <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a><span class="sep">, </span>
     
-      <a href="/tags/#model" class="page__taxonomy-item p-category" rel="tag">Model</a>
+      <a href="/tags/#semi-supervised" class="page__taxonomy-item p-category" rel="tag">Semi-supervised</a>
     
     </span>
   </p>
@@ -384,7 +381,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2023-02-04T00:00:00+09:00">February 4, 2023</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2023-03-10T00:00:00+09:00">March 10, 2023</time></p>
 
       </footer>
 
@@ -393,12 +390,11 @@
       
   <nav class="pagination">
     
-      <a href="/machine%20learning/Decision-tree/" class="pagination--pager" title="Decision tree
+      <a href="/machine%20learning/augmentation_timeseries/" class="pagination--pager" title="Augmentation of Time series data
 ">이전</a>
     
     
-      <a href="/machine%20learning/Overfitting/" class="pagination--pager" title="Overfitting
-">다음</a>
+      <a href="#" class="pagination--pager disabled">다음</a>
     
   </nav>
 
@@ -490,8 +486,8 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/machine%20learning/K-nearest-neighbor/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/machine%20learning/K-nearest neighbor"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "http://localhost:4000/machine%20learning/semi_supervised_learning/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/machine%20learning/semi_supervised_learning"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
