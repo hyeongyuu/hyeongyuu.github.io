@@ -1,0 +1,634 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>FixMatch - Hyeongyu.log</title>
+<meta name="description" content="시작하며 최근 지도학습(Supervised learning) 접근으로 모델 개발을 진행하고 있습니다. 1차원 시계열 데이터로 한 개의 패턴을 인식하는 모델 개발이 목표이며, 패턴 인식으로 특정 시간 내의 패턴 개수, 길이 등을 파악하고자 합니다. 입력값(input data)으로 시계열 데이터가 들어가면 출력값(output data)으로 패턴 인식 결과를 반환하는 방식으로 내부 DB의 약 1,000개를 활용하여 모델 개발을 진행하고 있습니다.">
+
+
+  <meta name="author" content="Moon Hyeongyu">
+  
+  <meta property="article:author" content="Moon Hyeongyu">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Hyeongyu.log">
+<meta property="og:title" content="FixMatch">
+<meta property="og:url" content="http://localhost:4000/machine%20learning/fixmatch/">
+
+
+  <meta property="og:description" content="시작하며 최근 지도학습(Supervised learning) 접근으로 모델 개발을 진행하고 있습니다. 1차원 시계열 데이터로 한 개의 패턴을 인식하는 모델 개발이 목표이며, 패턴 인식으로 특정 시간 내의 패턴 개수, 길이 등을 파악하고자 합니다. 입력값(input data)으로 시계열 데이터가 들어가면 출력값(output data)으로 패턴 인식 결과를 반환하는 방식으로 내부 DB의 약 1,000개를 활용하여 모델 개발을 진행하고 있습니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-03-11T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/machine%20learning/fixmatch/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Moon Hyeongyu",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Hyeongyu.log Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo.jpg/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo.jpg/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/logo.jpg/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/images/logo.jpg/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+    
+      <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+        equationNumbers: {
+        autoNumber: "AMS"
+        }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+    }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+    });
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+    });
+</script>
+<script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Hyeongyu.log
+          <span class="site-subtitle"></span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/bio-photo.jpg" alt="Moon Hyeongyu" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Moon Hyeongyu</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Data Scientist</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Seoul.South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:hyeongyu.moon@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/hyeongyu-moon-9b7498264/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/hyeongyuu" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="FixMatch">
+    <meta itemprop="description" content="시작하며최근 지도학습(Supervised learning) 접근으로 모델 개발을 진행하고 있습니다. 1차원 시계열 데이터로 한 개의 패턴을 인식하는 모델 개발이 목표이며, 패턴 인식으로 특정 시간 내의 패턴 개수, 길이 등을 파악하고자 합니다. 입력값(input data)으로 시계열 데이터가 들어가면 출력값(output data)으로 패턴 인식 결과를 반환하는 방식으로 내부 DB의 약 1,000개를 활용하여 모델 개발을 진행하고 있습니다.">
+    <meta itemprop="datePublished" content="2023-03-11T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/machine%20learning/fixmatch/" class="u-url" itemprop="url">FixMatch
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> content</h4></header>
+              <ul class="toc__menu"><li><a href="#시작하며">시작하며</a></li><li><a href="#준지도학습semi-supervised-learning">준지도학습(Semi-supervised learning)</a><ul><li><a href="#준지도학습이란">준지도학습이란?</a></li><li><a href="#준지도학습의-필요성-및-효과">준지도학습의 필요성 및 효과</a></li></ul></li><li><a href="#fixmatch">Fixmatch</a><ul><li><a href="#fixmatch란">Fixmatch란?</a><ul><li><a href="#consistency-regularization">Consistency regularization</a></li><li><a href="#pseudo-labeling">Pseudo labeling</a></li><li><a href="#loss-function">Loss function</a></li></ul></li></ul></li><li><a href="#마치며">마치며</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="시작하며">시작하며</h2>
+<p>최근 지도학습(Supervised learning) 접근으로 모델 개발을 진행하고 있습니다. 1차원 시계열 데이터로 한 개의 패턴을 인식하는 모델 개발이 목표이며, 패턴 인식으로 특정 시간 내의 패턴 개수, 길이 등을 파악하고자 합니다. 입력값(input data)으로 시계열 데이터가 들어가면 출력값(output data)으로 패턴 인식 결과를 반환하는 방식으로 내부 DB의 약 1,000개를 활용하여 모델 개발을 진행하고 있습니다.</p>
+
+<p>데이터는 몇 달 동안 서비스를 제공하면서 축적하여 데이터가 약 1,000개 정도로 어느 정도 크기가 있지만, 신규 고객사가 생겨 새로운 모델을 개발한다면 또 다른 훈련을 위한 데이터, 즉 새로운 고객사 데이터가 필요할 것입니다. 이를 해결하기 위해 데이터가 많이 없어도 그만큼의 효과를 낼 수 있는 준지도학습(Semi-supervised learning) 접근으로 모델을 개발하고자 합니다.</p>
+
+<p>이번 글에서 준지도학습 도입을 위해 준지도학습은 어떤 훈련 방식인지? 어떨 때 사용하면 좋을지? 등에 대해 알아보고, 방법 중 하나인 FixMatch에 대해 작성하고자 합니다. FixMatch의 핵심이 되는 부분에 대해 정리하고, 직접 코드로 구현하면서 자세히 알아보도록 하겠습니다.</p>
+
+<h2 id="준지도학습semi-supervised-learning">준지도학습(Semi-supervised learning)</h2>
+<h3 id="준지도학습이란">준지도학습이란?</h3>
+<p><span style="background-color: #dcffe4"><strong>준지도학습은 <u>레이블이 있는 데이터(Labeled data)</u>와 <u>레이블이 없는 데이터(Unlabeled data)</u>를 조합하여 모델을 훈련하는 기법</strong></span>입니다. <strong>지도학습</strong>은 레이블이 있는 데이터만 훈련하지만, <strong>준지도학습</strong>은 레이블이 없는 데이터를 함께 사용하여 <strong><u>모델이 더 많은 데이터를 학습</u></strong>하도록 합니다. 아래 이미지에서 보듯 레이블이 없는 데이터를 훈련에 사용하기 때문에 최적의 decision boundary를 찾을 수 있습니다.</p>
+
+<p><img src="/assets/images/post_images/semi_supervised_learning.png" alt="Semi-supervised learning" width="600" height="600" class="align-center" /></p>
+
+<p><strong>준지도학습의 핵심</strong>은 <strong>레이블이 있는 데이터와 없는 데이터</strong>를 <strong>모두 모델 훈련에 사용하는 것</strong>입니다. <strong>레이블이 있는 데이터</strong>로 모델의 입력값, 출력값 간의 관계를 학습하여 <strong>확률분포를 추정</strong>하고, <strong>레이블이 없는 데이터</strong>로 추정한 <strong>확률분포의 주변값을 학습</strong>함으로써 모델의 일반화 능력을 향상시킬 수 있습니다.</p>
+
+<p>준지도학습으로 개, 고양이 분류 모델을 개발한다고 가정해보겠습니다. 제가 보유한 이미지가 총 100장이고 이 중에서 개, 고양이로 표시된(레이블이 있는) 이미지가 10장 있습니다. 먼저 10장(레이블이 있는 이미지)으로 개, 고양이를 알려주고 나머지 90장(레이블이 없는 이미지)에 대해서는 이전 10장을 기반으로 나머지 90장을 알려주는 것입니다. 그 결과, 실제로 정답지는 10개밖에 없었지만, 100개를 전부 학습한 효과를 얻게 됩니다.</p>
+
+<h3 id="준지도학습의-필요성-및-효과">준지도학습의 필요성 및 효과</h3>
+<p>웹상에서 얻을 수 있는 데이터는 많지만 <strong>목적에 맞게 레이블까지 있는 데이터는 구하기 어렵습니다.</strong> 예를 들어 안경 쓴 고양이에 대한 이미지를 얻고자 한다면, 아래와 같이 구글 검색만으로 여러 장의 이미지 데이터를 수집할 수 있습니다. 그러나 이미지 한 장씩 안경 쓴 고양이인지 아닌지 직접 확인하고 태깅하며 데이터셋을 구축하는 작업은 비용이 많이 소모됩니다.</p>
+
+<p><img src="/assets/images/post_images/google_cat.png" alt="Google cat" width="450" height="600" /> -&gt; <strong>Tagging</strong> <img src="/assets/images/post_images/labeled_cat.png" alt="Labeled cat" width="300" height="300" /></p>
+
+<p>이와같이 <strong>데이터를 얻는 데 시간과 비용이 많이 요구되는 경우 준지도학습이 적합</strong>합니다. 앞선 예시처럼 10개의 레이블이 있는 이미지로 100개만큼의 학습 효과를 얻는 것처럼 적은 양의 데이터로 많은 양의 데이터를 학습한 효과를 가져올 수 있기 때문입니다.</p>
+
+<p>그리고 <strong>상대적으로 구하기 쉬운 레이블이 없는 데이터를 어떻게 활용할 것인가에 대한 해결책이 준지도학습</strong>이라 생각합니다. 레이블이 없는 데이터는 레이블이 있는 데이터에 비해 많은 양의 데이터 확보가 가능하므로 이를 전부 학습에 사용한다면 더 뛰어난 성능을 가진 모델을 생성할 수 있을 것입니다.
+<!-- 기초 확률분포가 정확할수록 좋은 효과를 가져옴, 레이블 데이터의 부족, 확률분포 추정 --></p>
+
+<h2 id="fixmatch">Fixmatch</h2>
+<h3 id="fixmatch란">Fixmatch란?</h3>
+<p><span style="background-color: #dcffe4"><strong>준지도학습 방법론 중 하나로 일관성(Consistency)과 신뢰성(Confidence)에 기반한 FixMatch</strong></span>가 있습니다. <strong>데이터를 변형해도 고유한 성질은 유지하고 있다는 일관성</strong>(ex. 강아지 이미지를 아무리 변형해도 강아지라는 사실)과 <strong>변형한 데이터의 예측값에 대한 신뢰성</strong>(ex. 강아지라는 예측값을 얼마나 믿을 수 있는지)이 핵심적인 부분이며, <strong>데이터를 서로 다른 방식으로 변형 및 대조하는 방식으로 모델을 학습</strong>합니다.</p>
+
+<p><img src="/assets/images/post_images/fixmatch_pipeline.png" alt="FixMatch pipeline" width="600" height="600" class="align-center" /></p>
+
+<p><strong>모델 학습</strong>은 아래와 같이 진행합니다.</p>
+<ol>
+  <li>레이블이 있는 데이터로 모델 학습</li>
+  <li>학습된 모델로 레이블링 되지 않은 데이터 예측값 생성
+    <ul>
+      <li><strong>Weak Augmentation</strong>. 약한 변형으로 <u>confidence threshold를 넘는 결과에 대해 Pseudo-label 생성</u></li>
+      <li><strong>Strong Augmentation</strong>. 강한 변형으로 <u>앞서 생성한 Pseudo-label로 loss 산출</u></li>
+    </ul>
+  </li>
+  <li>레이블이 있는 데이터와 없는 데이터의 loss를 합하여 모델 학습
+    <ul>
+      <li><strong>Loss(total) = Loss(Labeled data) + Loss(Unlabeled data)</strong></li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="consistency-regularization">Consistency regularization</h4>
+<p>대부분의 준지도학습에서 사용하는 방법으로 <strong><u>데이터에 작은 변형을 가해도 모델 예측값은 동일</u></strong>하다는 것입니다. 고양이 이미지에 <strong>노이즈를 추가해도 데이터의 고유한 성질은 해치지 않기 때문에</strong> 모델은 이전과 동일하게 고양이로 예측할 것입니다.</p>
+
+<p><img src="/assets/images/post_images/consistency_regularization.png" alt="Consistency regularization" width="600" height="600" class="align-center" /></p>
+
+<p>Consistency regularization은 FixMatch의 가장 중요한 방법론으로 <strong>레이블이 있는 데이터의 주변 확률 분포에 대해 학습하는 효과</strong>를 가져오는 동시에 <strong>Pseudo-label을 생성하기 위한 가정</strong> 중 하나이기도 합니다.</p>
+
+<h4 id="pseudo-labeling">Pseudo labeling</h4>
+<p>모델로 레이블이 없는 데이터를 예측하고, <strong>예측값을 레이블로 생성하여 기존의 학습 데이터와 생성한 레이블을 함께 모델 학습에 사용하는 방법</strong>입니다. 모델로 생성한 레이블이 정확하지 않을 수 있으므로 데이터의 크기와 모델 성능을 고려하여 아래 두 가지 방법 중 적절한 방법을 선정하는 것이 중요합니다.</p>
+
+<p>준지도학습의 필수 방법론으로 FixMatch에서 Consistency regularization과 결합하여 사용함으로써 더 큰 학습 효과를 가져옵니다.</p>
+
+<p><strong>Method 1. 레이블을 생성해나가며 학습</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 레이블이 있는 데이터와 없는 데이터를 함께 사용하며 학습을 진행
+</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">().</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># 손실함수에 대한 가중치 loss = labeled loss + (alpha * unlabeled loss)
+</span>
+<span class="k">for</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">unlabel_data</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trainloader</span><span class="p">,</span> <span class="n">unlabeledloader</span><span class="p">):</span> 
+    
+    <span class="n">inputs</span><span class="p">,</span> <span class="n">_inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">unlabel_data</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">train_data</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+    <span class="n">outputs</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span> <span class="n">model</span><span class="p">(</span><span class="n">_inputs</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">_outputs</span><span class="p">.</span><span class="n">detach</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>  <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">criterion</span><span class="p">(</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">_labels</span><span class="p">)</span>
+    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">detach</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="p">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">).</span><span class="nb">sum</span><span class="p">().</span><span class="n">item</span><span class="p">()</span>
+</code></pre></div></div>
+<p><strong>Method 2. 학습된 모델로 레이블 생성</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 레이블이 있는 데이터로 모델을 생성한 다음 레이블이 없는 데이터로 학습을 진행
+</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">().</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pseudo_label_model.pth'</span><span class="p">))</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+
+<span class="n">pseudo_threshold</span> <span class="o">=</span> <span class="mf">0.95</span> <span class="c1"># 레이블 유의수준 confidence threshold
+</span><span class="n">pseudo_images</span><span class="p">,</span> <span class="n">pseudo_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="nb">float</span><span class="p">),</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="nb">long</span><span class="p">)</span>
+ 
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">unlabeledloader</span><span class="p">:</span>
+        <span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">functional</span><span class="p">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="n">max_val</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">detach</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">max_val</span><span class="p">.</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">pseudo_threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">pseudo_images</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">((</span><span class="n">pseudo_images</span><span class="p">,</span> <span class="n">images</span><span class="p">.</span><span class="n">cpu</span><span class="p">()[</span><span class="n">idx</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span> 
+            <span class="n">pseudo_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">((</span><span class="n">pseudo_labels</span><span class="p">,</span> <span class="n">predicted</span><span class="p">.</span><span class="n">cpu</span><span class="p">()[</span><span class="n">idx</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="loss-function">Loss function</h4>
+<p><strong>FixMatch 손실함수(Loss function)은 <u>레이블이 있는 데이터의 loss</u>와 <u>레이블이 없는 데이터의 loss</u>를 함께 사용</strong>합니다. 레이블이 있는 데이터는 지도학습과 같은 방법으로 loss를 산출하지만, <strong>레이블이 없는 데이터는 weak augmentation으로 생성한 레이블에 strong augmentation의 예측값으로 loss를 산출</strong>합니다. 그리고 일정 확률 이상의 정확한 레이블만 사용하거나 레이블이 없는 데이터의 loss에는 가중치를 부여하는 등의 제약 조건을 설정하여 loss function의 정확도를 높입니다.</p>
+
+<center>$L_{total}=L_{labeled}+\lambda L_{unlabeled}$ ($\lambda$는 unlabeled data의 loss에 대한 가중치입니다.)<br /><br />$L_{labeled}=-\frac{1}{N}\sum_{i=1}^{N}\sum_{j=1}^{C} y_{i,j} \log(p_{i,j})$, $L_{unlabeled}=-\frac{1}{N}\sum_{i=1}^{N}y_{i} \log(p_{i})$</center>
+<p><br /></p>
+
+<p>$L_{labeled}$(레이블이 있는 데이터의 loss)는 cross-entropy loss를 사용하여 계산합니다. $N$은 배치 크기, $C$는 클래스 수, $y_{i,j}$는 $i$번째 샘플의 $j$번째 클래스 레이블(one-hot encoding), $p_{i,j}$는 $i$번째 샘플의 $j$번째 클래스에 속할 확률을 나타냅니다. 즉, $p_{i,j}=\text{softmax}(z_{i,j})$이며, $z_{i,j}$는 모델의 출력값입니다.</p>
+
+<p>$L_{unlabeled}$(레이블이 없는 데이터의 loss)는 pseudo-label을 사용하여 계산합니다. $N$은 배치 크기, $y_{i}$는 $i$번째 샘플의 pseudo-label을 나타내며, $p_{i}$는 $i$번째 샘플의 pseudo-label에 속할 확률을 나타냅니다. 즉, $p_{i}=\text{softmax}(z_{i})$이며, $z_{i}$는 모델의 출력값입니다.</p>
+
+<!-- ### 코드 구현
+Pytorch로 구현한 FixMatch 코드입니다. -->
+
+<h2 id="마치며">마치며</h2>
+<p>이번 글에서 준지도학습과 그 중 하나인 FixMatch에 대해 알아보았습니다. 준지도학습은 어떤 학습 방법인지, 그 중 FixMatch는 어떤 로직으로 모델을 학습하는지와 같이 이론적인 부분을 글로 정리하면서 깊게 이해할 수 있었습니다. 반대로 로직을 코드로 구현하고 모델 개발까지 진행하여 실제 성능을 비교 및 검증해보지 못한 부분이 아쉬웠습니다.</p>
+
+<p>다음 글에서는 준지도학습에 필요한 최소한의 데이터는 어느정도인지, 레이블이 있는 데이터와 없는 데이터의 비율은 얼만큼이 적합할지 등 실험을 통해 모델의 한계점과 문제점을 파악해보면 좋을 것 같습니다.</p>
+
+<!-- ## Reference -->
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a><span class="sep">, </span>
+    
+      <a href="/tags/#semi-supervised-learning" class="page__taxonomy-item p-category" rel="tag">Semi-supervised learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#machine-learning" class="page__taxonomy-item p-category" rel="tag">Machine learning</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2023-03-11T00:00:00+09:00">March 11, 2023</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/machine%20learning/augmentation_timeseries/" class="pagination--pager" title="Augmentation of Time series data
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:hyeongyu.moon@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/hyeongyu-moon-9b7498264/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/hyeongyuu" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Moon Hyeongyu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/machine%20learning/fixmatch/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/machine%20learning/fixmatch"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hyeongyu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
