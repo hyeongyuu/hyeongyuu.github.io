@@ -17,7 +17,6 @@ tags:
 # toc_sticky: true
 ---
 <br>
-
 머신러닝의 지도학습 기법으로 주로 분류에 자주 사용되는 SVM에 대하여 알아보고자 한다. SupportVectorMachine의 줄일말로 **SupprotVector(서포트 벡터)와 Hyperplane(초평면)을 이용해 DecisionBoundary(결정 경계)를 정의하고 분류를 시행하는 알고리즘**이다.
 
 >DecisionBoundry  

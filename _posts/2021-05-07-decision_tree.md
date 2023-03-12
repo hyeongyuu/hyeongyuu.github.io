@@ -17,7 +17,6 @@ tags:
 # toc_sticky: true
 ---
 <br>
-
 머신러닝의 기법으로 결정 트리(Decision Tree)를 사용하여 예측 모델을 만드는 결정 트리 학습법(Decision Tree Learning)이 있다. 결정 트리는 의사 결정 규칙과 그에 따른 결과를 보기 쉽게 트리 구조로 나타내어 결과에 대한 원인 파악이 가능하다는 장점이 있다. 즉, 결정 트리의 규칙들이 어떤 기준으로 설정되었는지 살펴보고 분류 결과 확인이 같이 가능하기 때문에 **분류 기준을 파악하기에 유용할것이다.**
 
 ![decisiontree5](https://user-images.githubusercontent.com/82218035/117408108-690f8e80-af4a-11eb-9c24-948b0564476b.PNG)

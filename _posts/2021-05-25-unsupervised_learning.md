@@ -16,7 +16,6 @@ tags:
 # toc_sticky: true
 ---
 <br>
-
 머신러닝은 크게 지도학습(Supervised Learning), 비지도학습(Unsupervised Learning), 강화학습(Reinforcement Learning)으로 나뉜다. 지도학습과 강화학습은 입력(Input)에 대한 결과(Output)를 주고 학습하는 방식이지만 비지도학습은 입력에 대한 결과가 없이 입력만으로 학습을 진행한다. 비지도학습을 시험에 빗대면 문제에 정답이 없는 논술형 시험과 비슷하다고 생각하는데 정답이 없기 때문에 정답을 판단하는 기준이 모호하고 결과는 해석하기 나름이라는 공통점이 있다.  
 
 ![unsupervised learning1](https://user-images.githubusercontent.com/82218035/119490037-5218cb00-bd97-11eb-8b2b-7e373249f9bd.PNG)
