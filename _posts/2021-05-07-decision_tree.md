@@ -1,7 +1,6 @@
 ---
 layout: single
 title: "Decision tree"
-excerpt: ""
 
 date: 2023-02-04
 
@@ -10,7 +9,8 @@ categories:
 tags:
     - Machine learning
     - Model
-
+    - Backlog
+    
 # toc: true
 # toc_label: "content"
 # toc_icon: "bars"

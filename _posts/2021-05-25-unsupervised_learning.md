@@ -1,7 +1,6 @@
 ---
 layout: single
 title: "Unsupervised learning"
-excerpt: ""
 
 date: 2023-02-04
 
@@ -9,6 +8,7 @@ categories:
     - Machine learning
 tags:
     - Machine learning
+    - Backlog
 
 # toc: true
 # toc_label: "content"

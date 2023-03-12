@@ -1,7 +1,6 @@
 ---
 layout: single
 title: "Support vector machine"
-excerpt: ""
 
 date: 2023-02-04
 
@@ -10,6 +9,7 @@ categories:
 tags:
     - Machine learning
     - Model
+    - Backlog
 
 # toc: true
 # toc_label: "content"
