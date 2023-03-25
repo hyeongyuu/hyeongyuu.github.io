@@ -60,5 +60,5 @@ Inductive bias는 보지 못한 데이터에 대해서 귀납적 추론이 가�
 이번 글에서는 label smoothing과 inductive label에 대해 알아보았습니다. Label smoothing은 모델이 정답 class와 정답이 아닌 class를 동시에 학습하여 class 간의 구분을 더 명확히 할 수 있도록 만듭니다. 그리고 label smoothing을 통해 inductive bias를 구축하고 이는 모델의 일반화 성능을 향상시키고, 모델 성능 개선을 이룰 수 있었습니다.
 
 ### Reference
-https://ratsgo.github.io/insight-notes/docs/interpretable/smoothing
+https://ratsgo.github.io/insight-notes/docs/interpretable/smoothing  
 https://en.wikipedia.org/wiki/Inductive_bias
