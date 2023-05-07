@@ -73,7 +73,7 @@ toc_sticky: true
 데이터 관점에서 결과를 파악해보니, 모델이 생성한 CAM으로 모델의 취약점이 무엇인지와 반대로 어떤 부분을 잘 잡아내는지를 알 수 있었습니다.
 
 ## 마치며
-이번 글에서 논문(Learning Deep Features for Discriminative Localization)에 나온 CAM을 직접 코드로 구현하고, 다양한 데이터로 결과를 직접 살펴보았습니다. 
+이번 글에서 논문(Learning Deep Features for Discriminative Localization)에 나온 CAM을 직접 코드로 구현하고, 다양한 데이터로 결과를 직접 살펴보았습니다. 모델 학습 과정을 각 layer에 대한 CAM 결과로 확인할 수 있었으며, 모델이 데이터마다 어떤 부분에 중점을 두고 분류했는지도 알 수 있었습니다. 
 
 ### Reference
 https://www.kaggle.com/c/dogs-vs-cats
